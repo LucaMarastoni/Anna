@@ -105,15 +105,16 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: saturate(0.82);
+  filter: saturate(0.7) brightness(0.62) blur(2.1px);
+  transform: scale(1.04);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(26, 21, 18, 0.75), rgba(192, 112, 82, 0.55));
+  background: linear-gradient(135deg, rgba(20, 16, 14, 0.82), rgba(192, 112, 82, 0.42));
   z-index: -1;
-  opacity: 0.9;
+  opacity: 0.88;
 }
 
 .hero-content {
@@ -122,6 +123,7 @@ nav a:hover {
   display: grid;
   gap: 1.25rem;
   justify-items: center;
+  text-shadow: 0 14px 32px rgba(10, 6, 4, 0.52);
 }
 
 .hero-eyebrow {
