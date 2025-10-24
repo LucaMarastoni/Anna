@@ -6,6 +6,7 @@
   --color-muted: #7b7165;
   --font-primary: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Playfair Display", "Times New Roman", serif;
+  --navbar-height: 72px;
 }
 
 * {
@@ -502,6 +503,10 @@ nav a:hover {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --navbar-height: 112px;
+  }
+
   .nav-content {
     flex-direction: column;
     gap: 0.8rem;
@@ -513,10 +518,16 @@ nav a:hover {
 
   .hero {
     min-height: 86vh;
+    padding-top: calc(var(--navbar-height, 72px) + 2.6rem);
+    padding-bottom: 4.5rem;
+    align-items: start;
+    align-content: start;
+    justify-items: center;
   }
 
   .hero-content {
-    padding-top: 6rem;
+    padding-top: 0;
+    gap: 1.1rem;
   }
 
   .section {
@@ -533,6 +544,10 @@ nav a:hover {
 }
 
 @media (max-width: 540px) {
+  :root {
+    --navbar-height: 128px;
+  }
+
   .nav-content {
     padding: 0.75rem 0;
   }
@@ -549,11 +564,13 @@ nav a:hover {
 
   .hero {
     min-height: 78vh;
+    padding-top: calc(var(--navbar-height, 72px) + 2rem);
     padding-bottom: 3.5rem;
   }
 
   .hero-content {
-    padding-top: 5rem;
+    padding-top: 0;
+    gap: 0.9rem;
   }
 
   .hero h1 {

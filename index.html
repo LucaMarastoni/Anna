@@ -182,16 +182,31 @@
         }
 
         const navbar = document.querySelector(".navbar");
+        const root = document.documentElement;
         const productSection = document.getElementById("prodotti");
         const parallaxItems = Array.from(document.querySelectorAll("[data-parallax]"));
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
         let scrollFrame = null;
+        let navbarHeight = 0;
+
+        const setNavbarHeight = () => {
+          if (!navbar || !root) {
+            return;
+          }
+          const nextHeight = Math.round(navbar.getBoundingClientRect().height);
+          if (!Number.isFinite(nextHeight) || nextHeight <= 0 || nextHeight === navbarHeight) {
+            return;
+          }
+          navbarHeight = nextHeight;
+          root.style.setProperty("--navbar-height", `${navbarHeight}px`);
+        };
 
         const smoothScrollTo = (element, extraOffset = 16) => {
           if (!element) {
             return;
           }
-          const navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+          const navHeight =
+            navbarHeight || (navbar ? Math.round(navbar.getBoundingClientRect().height) : 0);
           const targetPosition =
             element.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset;
           window.scrollTo({
@@ -225,7 +240,11 @@
             return;
           }
           const shouldCondense = (window.scrollY || window.pageYOffset || 0) > 18;
-          navbar.classList.toggle("is-condensed", shouldCondense);
+          const wasCondensed = navbar.classList.contains("is-condensed");
+          if (shouldCondense !== wasCondensed) {
+            navbar.classList.toggle("is-condensed", shouldCondense);
+            setNavbarHeight();
+          }
         };
 
         const updateParallax = () => {
@@ -259,11 +278,16 @@
           });
         };
 
+        setNavbarHeight();
         updateNavbarState();
         updateParallax();
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        window.addEventListener("resize", updateParallax);
+        window.addEventListener("resize", () => {
+          setNavbarHeight();
+          updateParallax();
+        });
+        window.addEventListener("load", setNavbarHeight);
         if (typeof prefersReducedMotion.addEventListener === "function") {
           prefersReducedMotion.addEventListener("change", updateParallax);
         } else if (typeof prefersReducedMotion.addListener === "function") {
