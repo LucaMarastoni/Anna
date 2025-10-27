@@ -59,7 +59,7 @@
       description:
         "Set di bicchieri incisi a mano per eventi speciali, collezioni limitate e regali unici con grafiche su misura.",
       caption: "Bicchieri incisi per eventi, cerimonie e regali personalizzati.",
-      images: ["bicchiere1.jpeg", "bicchiere2.jpeg"]
+      images: ["bicchiere1.jpeg", "bicchiere2.jpeg", "bicchiere3.jpeg"]
     },
     bottiglie: {
       title: "Bottiglie con lampada",
@@ -70,7 +70,121 @@
     }
   };
 
+  let lightboxEl = null;
+  let lightboxImage = null;
+  let lightboxCaption = null;
+  let lightboxCloseBtn = null;
+  let lastFocusedElement = null;
+
   const padIndex = (index) => String(index + 1).padStart(2, "0");
+
+  function ensureLightbox() {
+    if (lightboxEl) {
+      return lightboxEl;
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-hidden", "true");
+
+    overlay.innerHTML = `
+      <div class="lightbox__inner" role="document">
+        <button type="button" class="lightbox__close" aria-label="Chiudi immagine">&times;</button>
+        <img class="lightbox__image" src="" alt="">
+        <p class="lightbox__caption"></p>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    lightboxEl = overlay;
+    lightboxImage = overlay.querySelector(".lightbox__image");
+    lightboxCaption = overlay.querySelector(".lightbox__caption");
+    lightboxCloseBtn = overlay.querySelector(".lightbox__close");
+
+    if (lightboxCloseBtn) {
+      lightboxCloseBtn.addEventListener("click", () => {
+        closeLightbox();
+      });
+    }
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) {
+        closeLightbox();
+      }
+    });
+
+    const inner = overlay.querySelector(".lightbox__inner");
+    if (inner) {
+      inner.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+    }
+
+    return overlay;
+  }
+
+  function openLightbox(item, triggerElement) {
+    const overlay = ensureLightbox();
+    if (!overlay || !lightboxImage) {
+      return;
+    }
+
+    lightboxImage.src = item.src;
+    lightboxImage.alt = item.alt || "";
+
+    if (lightboxCaption) {
+      if (item.caption) {
+        lightboxCaption.textContent = item.caption;
+        lightboxCaption.classList.remove("is-hidden");
+      } else {
+        lightboxCaption.textContent = "";
+        lightboxCaption.classList.add("is-hidden");
+      }
+    }
+
+    lastFocusedElement = triggerElement || document.activeElement || null;
+    overlay.classList.add("is-active");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-lightbox-open");
+
+    if (lightboxCloseBtn && typeof lightboxCloseBtn.focus === "function") {
+      lightboxCloseBtn.focus();
+    }
+  }
+
+  function closeLightbox() {
+    if (!lightboxEl || !lightboxEl.classList.contains("is-active")) {
+      return;
+    }
+
+    lightboxEl.classList.remove("is-active");
+    lightboxEl.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-lightbox-open");
+
+    if (lightboxImage) {
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = "";
+    }
+
+    if (lightboxCaption) {
+      lightboxCaption.textContent = "";
+      lightboxCaption.classList.remove("is-hidden");
+    }
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
+    lastFocusedElement = null;
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+  });
 
   const createGalleryItems = (category) => {
     const config = galleryConfig[category];
@@ -81,7 +195,8 @@
       category,
       src: `assets/img/${filename}`,
       title: `${config.title} ${padIndex(index)}`,
-      alt: `${config.title} ${padIndex(index)}`
+      alt: `${config.title} ${padIndex(index)}`,
+      caption: config.caption
     }));
   };
 
@@ -114,6 +229,12 @@
         card.className = "product-card";
         card.dataset.category = item.category;
         card.setAttribute("data-reveal", "fade-up");
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute(
+          "aria-label",
+          item.title ? `Apri ${item.title} a schermo intero` : "Apri immagine a schermo intero"
+        );
         const delay = (index % 4) * 60;
         if (delay) {
           card.setAttribute("data-reveal-delay", String(delay));
@@ -126,14 +247,14 @@
         img.decoding = "async";
         card.appendChild(img);
 
-        const info = document.createElement("div");
-        info.className = "product-info";
-
-        const title = document.createElement("h3");
-        title.textContent = item.title;
-        info.appendChild(title);
-
-        card.appendChild(info);
+        const handleOpen = () => openLightbox(item, card);
+        card.addEventListener("click", handleOpen);
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            handleOpen();
+          }
+        });
         fragment.appendChild(card);
       });
 
