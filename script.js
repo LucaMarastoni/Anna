@@ -75,6 +75,9 @@
   let lightboxCaption = null;
   let lightboxCloseBtn = null;
   let lastFocusedElement = null;
+  let privacyModalEl = null;
+  let privacyCloseBtn = null;
+  let lastPrivacyTrigger = null;
 
   const padIndex = (index) => String(index + 1).padStart(2, "0");
 
@@ -157,7 +160,7 @@
 
   function closeLightbox() {
     if (!lightboxEl || !lightboxEl.classList.contains("is-active")) {
-      return;
+      return false;
     }
 
     lightboxEl.classList.remove("is-active");
@@ -178,11 +181,115 @@
       lastFocusedElement.focus();
     }
     lastFocusedElement = null;
+    return true;
+  }
+
+  function ensurePrivacyModal() {
+    if (privacyModalEl) {
+      return privacyModalEl;
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "privacy-modal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-hidden", "true");
+
+    overlay.innerHTML = `
+      <div class="privacy-modal__inner" role="document">
+        <button type="button" class="privacy-modal__close" aria-label="Chiudi Privacy Policy">&times;</button>
+        <header class="privacy-modal__header">
+          <h2 class="section-title">Privacy Policy</h2>
+          <p class="section-subtitle">
+            Trasparenza totale: qui scopri come vengono raccolti, utilizzati e protetti i tuoi dati personali quando
+            navighi sul sito o richiedi informazioni.
+          </p>
+        </header>
+        <div class="privacy-grid">
+          <article class="privacy-card">
+            <h3>Dati raccolti</h3>
+            <p>Quando contatti Anna vengono trattati nome, indirizzo e-mail, telefono (se fornito) e il contenuto della tua richiesta. Non vengono raccolti dati sensibili.</p>
+          </article>
+          <article class="privacy-card">
+            <h3>Finalità e durata</h3>
+            <p>I dati sono utilizzati esclusivamente per rispondere, predisporre preventivi e gestire ordini o consegne. Sono conservati solo per il tempo necessario a queste attività.</p>
+          </article>
+          <article class="privacy-card">
+            <h3>Condivisione</h3>
+            <p>Le informazioni non vengono vendute né cedute. Possono essere condivise con fornitori strettamente necessari alla realizzazione del progetto, sempre sotto accordi di riservatezza.</p>
+          </article>
+          <article class="privacy-card">
+            <h3>Diritti dell’interessato</h3>
+            <p>Puoi richiedere accesso, rettifica o cancellazione dei dati scrivendo a <a href="mailto:privacy@annaatelier.it">privacy@annaatelier.it</a>. Riceverai risposta entro 30 giorni.</p>
+          </article>
+        </div>
+        <p class="privacy-note">Ultimo aggiornamento: 1 giugno 2024. Per approfondimenti o segnalazioni contatta privacy@annaatelier.it.</p>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    privacyModalEl = overlay;
+    privacyCloseBtn = overlay.querySelector(".privacy-modal__close");
+
+    if (privacyCloseBtn) {
+      privacyCloseBtn.addEventListener("click", () => closePrivacyModal());
+    }
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) {
+        closePrivacyModal();
+      }
+    });
+
+    const inner = overlay.querySelector(".privacy-modal__inner");
+    if (inner) {
+      inner.addEventListener("click", (event) => event.stopPropagation());
+    }
+
+    return overlay;
+  }
+
+  function openPrivacyModal(triggerElement) {
+    const overlay = ensurePrivacyModal();
+    if (!overlay) {
+      return;
+    }
+
+    lastPrivacyTrigger = triggerElement || document.activeElement || null;
+    overlay.classList.add("is-active");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-modal-open");
+
+    if (privacyCloseBtn && typeof privacyCloseBtn.focus === "function") {
+      privacyCloseBtn.focus();
+    }
+  }
+
+  function closePrivacyModal() {
+    if (!privacyModalEl || !privacyModalEl.classList.contains("is-active")) {
+      return false;
+    }
+
+    privacyModalEl.classList.remove("is-active");
+    privacyModalEl.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-modal-open");
+
+    if (privacyCloseBtn) {
+      privacyCloseBtn.blur();
+    }
+
+    if (lastPrivacyTrigger && typeof lastPrivacyTrigger.focus === "function") {
+      lastPrivacyTrigger.focus();
+    }
+    lastPrivacyTrigger = null;
+    return true;
   }
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeLightbox();
+      closePrivacyModal();
     }
   });
 
@@ -417,6 +524,16 @@
     prefersReducedMotion.addEventListener("change", updateParallax);
   } else if (typeof prefersReducedMotion.addListener === "function") {
     prefersReducedMotion.addListener(updateParallax);
+  }
+
+  const privacyTriggers = Array.from(document.querySelectorAll("[data-privacy-trigger]"));
+  if (privacyTriggers.length) {
+    privacyTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openPrivacyModal(trigger);
+      });
+    });
   }
 
   const filterButtons = Array.from(document.querySelectorAll("[data-filter-control]"));
