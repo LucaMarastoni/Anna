@@ -12,7 +12,7 @@
   <body>
     <header class="navbar">
       <div class="container nav-content">
-        <div class="logo">Anna Atelier</div>
+        <a class="logo" href="index.html">Anna Atelier</a>
         <nav>
           <a href="#categorie">Categorie</a>
           <a href="#prodotti">Prodotti</a>
@@ -24,7 +24,7 @@
     <main>
       <section class="hero">
         <video class="hero-video" autoplay muted loop playsinline data-parallax data-parallax-strength="-0.08">
-          <source src="vid/hero.mp4" type="video/mp4">
+          <source src="assets/vid/hero.mp4" type="video/mp4">
           Il tuo browser non supporta i video HTML5.
         </video>
         <div class="hero-overlay" data-parallax data-parallax-strength="-0.12"></div>
@@ -69,21 +69,31 @@
         <div class="container">
           <h2 class="section-title">Categorie</h2>
           <div class="categories">
-            <article class="category-card" data-reveal="fade-up" data-filter-trigger="decorazioni" role="button" tabindex="0" aria-label="Filtra prodotti Decorazioni" aria-pressed="false">
+            <a class="category-card" data-reveal="fade-up" href="categoria-legno.html">
               <div class="category-icon">✶</div>
-              <h3>Decorazioni</h3>
-              <p>Pezzi unici per dare carattere agli ambienti: candele colate a mano, ceramiche smaltate, poster in edizione limitata.</p>
-            </article>
-            <article class="category-card" data-reveal="fade-up" data-reveal-delay="80" data-filter-trigger="accessori" role="button" tabindex="0" aria-label="Filtra prodotti Accessori" aria-pressed="false">
+              <h3>Legno inciso</h3>
+              <p>Targhe, insegne e decorazioni in legno personalizzate con incisioni precise e dettagliate.</p>
+            </a>
+            <a class="category-card" data-reveal="fade-up" data-reveal-delay="80" href="categoria-metallo.html">
               <div class="category-icon">✦</div>
-              <h3>Accessori</h3>
-              <p>Gioielli artigianali e piccola pelletteria, con materiali naturali e lavorazioni tradizionali rivisitate.</p>
-            </article>
-            <article class="category-card" data-reveal="fade-up" data-reveal-delay="160" data-filter-trigger="testi" role="button" tabindex="0" aria-label="Filtra prodotti Testi e carte" aria-pressed="false">
+              <h3>Metallo inciso</h3>
+              <p>Acciaio e alluminio diventano supporti scenografici per loghi, pattern e lettering su misura.</p>
+            </a>
+            <a class="category-card" data-reveal="fade-up" data-reveal-delay="160" href="categoria-vetro.html">
               <div class="category-icon">✺</div>
-              <h3>Testi e carte</h3>
-              <p>Taccuini rilegati a mano, stampe botaniche e cartoleria dal sapore rétro per lettere e inviti speciali.</p>
-            </article>
+              <h3>Vetro inciso</h3>
+              <p>Incisioni su vetro trasparente o satinato, perfette per valorizzare oggetti e superfici luminose.</p>
+            </a>
+            <a class="category-card" data-reveal="fade-up" data-reveal-delay="240" href="categoria-bicchieri.html">
+              <div class="category-icon">❋</div>
+              <h3>Bicchieri incisi</h3>
+              <p>Set di bicchieri incisi a mano per eventi, collezioni speciali e regali personalizzati.</p>
+            </a>
+            <a class="category-card" data-reveal="fade-up" data-reveal-delay="320" href="categoria-bottiglie.html">
+              <div class="category-icon">✹</div>
+              <h3>Bottiglie con lampada</h3>
+              <p>Bottiglie recuperate trasformate in lampade poetiche, con incisioni che diffondono la luce.</p>
+            </a>
           </div>
         </div>
       </section>
@@ -96,60 +106,13 @@
           </div>
           <div class="filter-bar" role="group" aria-label="Filtra per categoria" data-reveal="fade-up">
             <button type="button" class="filter-btn is-active" data-filter-control="all" aria-pressed="true">Tutti</button>
-            <button type="button" class="filter-btn" data-filter-control="decorazioni" aria-pressed="false">Decorazioni</button>
-            <button type="button" class="filter-btn" data-filter-control="accessori" aria-pressed="false">Accessori</button>
-            <button type="button" class="filter-btn" data-filter-control="testi" aria-pressed="false">Testi e carte</button>
+            <button type="button" class="filter-btn" data-filter-control="legno" aria-pressed="false">Legno inciso</button>
+            <button type="button" class="filter-btn" data-filter-control="metallo" aria-pressed="false">Metallo inciso</button>
+            <button type="button" class="filter-btn" data-filter-control="vetro" aria-pressed="false">Vetro inciso</button>
+            <button type="button" class="filter-btn" data-filter-control="bicchieri" aria-pressed="false">Bicchieri incisi</button>
+            <button type="button" class="filter-btn" data-filter-control="bottiglie" aria-pressed="false">Bottiglie con lampada</button>
           </div>
-          <div class="product-grid">
-            <article class="product-card" data-category="decorazioni" data-reveal="fade-up">
-              <img src="https://images.unsplash.com/photo-1523419409543-0c1df022bdd1?auto=format&fit=crop&w=600&q=80" alt="Candela in cera di soia" loading="lazy">
-              <div class="product-info">
-                <h3>Candela in cera di soia</h3>
-                <p>Colata a mano con oli essenziali di lavanda e bergamotto, contenitore vintage recuperato.</p>
-                <ul class="product-meta">
-                  <li>Lotto limitato 30 pz</li>
-                  <li>Riutilizzo vasetto</li>
-                </ul>
-                <a class="link" href="#contatti">Richiedi disponibilità →</a>
-              </div>
-            </article>
-            <article class="product-card" data-category="accessori" data-reveal="fade-up" data-reveal-delay="80">
-              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Borsa in pelle conciata al vegetale" loading="lazy">
-              <div class="product-info">
-                <h3>Borsa in pelle conciata al vegetale</h3>
-                <p>Realizzata con pellami italiani certificati, cuciture a mano, disponibile in tre colorazioni.</p>
-                <ul class="product-meta">
-                  <li>Disponibile su ordinazione</li>
-                  <li>Personalizzazione iniziali</li>
-                </ul>
-                <a class="link" href="#contatti">Richiedi disponibilità →</a>
-              </div>
-            </article>
-            <article class="product-card" data-category="decorazioni" data-reveal="fade-up" data-reveal-delay="160">
-              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80" alt="Set di tazzine in ceramica" loading="lazy">
-              <div class="product-info">
-                <h3>Set di tazzine in ceramica</h3>
-                <p>Tornite e smaltate a mano, tonalità pastello e dettagli dorati. Ogni set comprende quattro pezzi.</p>
-                <ul class="product-meta">
-                  <li>Smaltatura oro 12k</li>
-                  <li>Lavaggio a mano consigliato</li>
-                </ul>
-                <a class="link" href="#contatti">Richiedi disponibilità →</a>
-              </div>
-            </article>
-            <article class="product-card" data-category="testi" data-reveal="fade-up" data-reveal-delay="240">
-              <img src="https://images.unsplash.com/photo-1518623495890-29e663232e95?auto=format&fit=crop&w=600&q=80" alt="Taccuino rilegato a mano" loading="lazy">
-              <div class="product-info">
-                <h3>Taccuino rilegato a mano</h3>
-                <p>Pagine in carta cotone, copertina in lino stampato con pattern anni '60, rilegatura a vista.</p>
-                <ul class="product-meta">
-                  <li>Formato 14 × 20 cm</li>
-                  <li>98 pagine carta 120 gr</li>
-                </ul>
-                <a class="link" href="#contatti">Richiedi disponibilità →</a>
-              </div>
-            </article>
-          </div>
+          <div class="product-grid" data-gallery-root data-gallery-context="homepage"></div>
         </div>
       </section>
 
@@ -176,219 +139,6 @@
       </div>
     </footer>
 
-    <script>
-      (() => {
-        const yearEl = document.getElementById("year");
-        if (yearEl) {
-          yearEl.textContent = new Date().getFullYear();
-        }
-
-        const revealElements = document.querySelectorAll("[data-reveal]");
-        if ("IntersectionObserver" in window) {
-          const revealObserver = new IntersectionObserver(
-            (entries, observer) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("is-visible");
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.2 }
-          );
-
-          revealElements.forEach((el) => {
-            const delay = el.getAttribute("data-reveal-delay");
-            if (delay) {
-              el.style.transitionDelay = `${parseInt(delay, 10)}ms`;
-            }
-            revealObserver.observe(el);
-          });
-        } else {
-          revealElements.forEach((el) => el.classList.add("is-visible"));
-        }
-
-        const navbar = document.querySelector(".navbar");
-        const root = document.documentElement;
-        const productSection = document.getElementById("prodotti");
-        const parallaxItems = Array.from(document.querySelectorAll("[data-parallax]"));
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-        let scrollFrame = null;
-        let navbarHeight = 0;
-
-        const setNavbarHeight = () => {
-          if (!navbar || !root) {
-            return;
-          }
-          const nextHeight = Math.round(navbar.getBoundingClientRect().height);
-          if (!Number.isFinite(nextHeight) || nextHeight <= 0 || nextHeight === navbarHeight) {
-            return;
-          }
-          navbarHeight = nextHeight;
-          root.style.setProperty("--navbar-height", `${navbarHeight}px`);
-        };
-
-        const smoothScrollTo = (element, extraOffset = 16) => {
-          if (!element) {
-            return;
-          }
-          const navHeight =
-            navbarHeight || (navbar ? Math.round(navbar.getBoundingClientRect().height) : 0);
-          const targetPosition =
-            element.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset;
-          window.scrollTo({
-            top: targetPosition < 0 ? 0 : targetPosition,
-            behavior: prefersReducedMotion.matches ? "auto" : "smooth"
-          });
-        };
-
-        const anchorLinks = Array.from(document.querySelectorAll('a[href^="#"]:not([href="#"])'));
-        anchorLinks.forEach((link) => {
-          const hash = link.getAttribute("href");
-          if (!hash || hash.length < 2) {
-            return;
-          }
-          const targetId = hash.slice(1);
-          const targetEl = document.getElementById(targetId);
-          if (!targetEl) {
-            return;
-          }
-          link.addEventListener("click", (event) => {
-            event.preventDefault();
-            smoothScrollTo(targetEl);
-            if (window.history && typeof window.history.replaceState === "function") {
-              window.history.replaceState(null, "", `#${targetId}`);
-            }
-          });
-        });
-
-        const updateNavbarState = () => {
-          if (!navbar) {
-            return;
-          }
-          const shouldCondense = (window.scrollY || window.pageYOffset || 0) > 18;
-          const wasCondensed = navbar.classList.contains("is-condensed");
-          if (shouldCondense !== wasCondensed) {
-            navbar.classList.toggle("is-condensed", shouldCondense);
-            setNavbarHeight();
-          }
-        };
-
-        const updateParallax = () => {
-          if (!parallaxItems.length) {
-            return;
-          }
-          if (prefersReducedMotion.matches) {
-            parallaxItems.forEach((el) => el.style.setProperty("--parallax-offset", "0px"));
-            return;
-          }
-          const scrollY = window.scrollY || window.pageYOffset || 0;
-          parallaxItems.forEach((el) => {
-            const strength = parseFloat(el.dataset.parallaxStrength || "0.08");
-            if (!Number.isFinite(strength) || strength === 0) {
-              el.style.setProperty("--parallax-offset", "0px");
-              return;
-            }
-            const offset = Math.max(Math.min(scrollY * strength, 160), -160);
-            el.style.setProperty("--parallax-offset", `${offset}px`);
-          });
-        };
-
-        const handleScroll = () => {
-          if (scrollFrame !== null) {
-            return;
-          }
-          scrollFrame = window.requestAnimationFrame(() => {
-            updateNavbarState();
-            updateParallax();
-            scrollFrame = null;
-          });
-        };
-
-        setNavbarHeight();
-        updateNavbarState();
-        updateParallax();
-
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        window.addEventListener("resize", () => {
-          setNavbarHeight();
-          updateParallax();
-        });
-        window.addEventListener("load", setNavbarHeight);
-        if (typeof prefersReducedMotion.addEventListener === "function") {
-          prefersReducedMotion.addEventListener("change", updateParallax);
-        } else if (typeof prefersReducedMotion.addListener === "function") {
-          prefersReducedMotion.addListener(updateParallax);
-        }
-
-        const filterButtons = Array.from(document.querySelectorAll("[data-filter-control]"));
-        const categoryTriggers = Array.from(document.querySelectorAll("[data-filter-trigger]"));
-        const productCards = Array.from(document.querySelectorAll(".product-card[data-category]"));
-
-        if (filterButtons.length && productCards.length) {
-          let activeFilter = "all";
-
-          const applyFilter = (category) => {
-            activeFilter = category;
-            filterButtons.forEach((button) => {
-              const isActive = button.dataset.filterControl === category;
-              button.classList.toggle("is-active", isActive);
-              button.setAttribute("aria-pressed", isActive ? "true" : "false");
-            });
-
-            categoryTriggers.forEach((trigger) => {
-              const isActive = trigger.dataset.filterTrigger === category;
-              trigger.classList.toggle("is-selected", isActive);
-              trigger.setAttribute("aria-pressed", isActive ? "true" : "false");
-            });
-
-            productCards.forEach((card) => {
-              const matches = category === "all" || card.dataset.category === category;
-              card.classList.toggle("is-filtered", !matches);
-            });
-          };
-
-          const handleTrigger = (targetFilter, options = {}) => {
-            const nextFilter = targetFilter || "all";
-            if (nextFilter !== activeFilter) {
-              applyFilter(nextFilter);
-            } else if (!targetFilter && activeFilter !== "all") {
-              applyFilter("all");
-            }
-
-            if (options.shouldScroll && productSection) {
-              smoothScrollTo(productSection);
-            }
-          };
-
-          filterButtons.forEach((button) => {
-            button.addEventListener("click", () =>
-              handleTrigger(button.dataset.filterControl, { shouldScroll: true })
-            );
-            button.addEventListener("keydown", (event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                handleTrigger(button.dataset.filterControl, { shouldScroll: true });
-              }
-            });
-          });
-
-          categoryTriggers.forEach((trigger) => {
-            trigger.setAttribute("role", "button");
-            trigger.addEventListener("click", () =>
-              handleTrigger(trigger.dataset.filterTrigger, { shouldScroll: true })
-            );
-            trigger.addEventListener("keydown", (event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                handleTrigger(trigger.dataset.filterTrigger, { shouldScroll: true });
-              }
-            });
-          });
-
-          applyFilter(activeFilter);
-        }
-      })();
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

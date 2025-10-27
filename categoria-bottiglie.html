@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bottiglie con lampada | Anna Atelier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-gallery-page="bottiglie">
+    <header class="navbar">
+      <div class="container nav-content">
+        <a class="logo" href="index.html">Anna Atelier</a>
+        <nav>
+          <a href="index.html#categorie">Categorie</a>
+          <a href="index.html#prodotti">Prodotti</a>
+          <a href="#contatti">Contatti</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section category-hero">
+        <div class="container category-hero__content">
+          <a class="back-link" href="index.html#categorie">&larr; Torna alle categorie</a>
+          <h1 class="section-title">Bottiglie con lampada</h1>
+          <p class="section-subtitle" data-gallery-caption></p>
+          <p class="category-description" data-gallery-description></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Galleria</h2>
+            <p class="section-subtitle">Tutte le realizzazioni per questa categoria.</p>
+          </div>
+          <div class="product-grid" data-gallery-root data-category="bottiglie"></div>
+        </div>
+      </section>
+
+      <section id="contatti" class="section contact">
+        <div class="container contact-content">
+          <div data-reveal="fade-up">
+            <h2 class="section-title">Contatta Anna</h2>
+            <p>Desideri un pezzo su misura o vuoi conoscere la disponibilità? Scrivi direttamente ad Anna, sarà felice di guidarti tra materiali, finiture e personalizzazioni.</p>
+          </div>
+          <div class="contact-card" data-reveal="fade-up" data-reveal-delay="120">
+            <h3>Info e ordini</h3>
+            <a class="contact-link" href="mailto:ciao@annaatelier.it">ciao@annaatelier.it</a>
+            <a class="contact-link" href="https://wa.me/393331234567" target="_blank" rel="noopener">WhatsApp +39 333 123 4567</a>
+            <p class="contact-note">Rispondo dal lunedì al venerdì, ore 10:00 - 18:00.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>&copy; <span id="year"></span> Anna Atelier. Tutti i diritti riservati.</p>
+        <a class="footer-link" href="#contatti">Privacy &amp; condizioni</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
