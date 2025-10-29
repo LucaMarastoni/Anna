@@ -727,17 +727,32 @@
       }
     };
 
+    const activateFilter = (targetCategory, options = {}) => {
+      handleFilter(targetCategory, options);
+    };
+
     filterButtons.forEach((button) => {
       button.addEventListener("click", () =>
-        handleFilter(button.dataset.filterControl, { shouldScroll: true })
+        activateFilter(button.dataset.filterControl, { shouldScroll: true })
       );
       button.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          handleFilter(button.dataset.filterControl, { shouldScroll: true });
+          activateFilter(button.dataset.filterControl, { shouldScroll: true });
         }
       });
     });
+
+    const filterLinks = Array.from(document.querySelectorAll("[data-filter-link]"));
+    if (filterLinks.length) {
+      filterLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const targetFilter = link.getAttribute("data-filter-link") || "all";
+          activateFilter(targetFilter, { shouldScroll: true });
+        });
+      });
+    }
 
     applyFilter(activeFilter);
   }
