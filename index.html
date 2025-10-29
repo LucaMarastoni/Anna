@@ -10,69 +10,151 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="navbar">
-      <div class="container nav-content">
+    <header class="site-header navbar">
+      <div class="header-band">
         <a class="logo" href="index.html">Anna Atelier</a>
-        <nav>
-          <a href="#categorie">Categorie</a>
-          <a href="#prodotti">Prodotti</a>
-          <a href="#contatti">Contatti</a>
-        </nav>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+          <span class="menu-toggle__box" aria-hidden="true">
+            <span class="menu-toggle__bar"></span>
+          </span>
+          <span class="sr-only">Apri il menu</span>
+        </button>
       </div>
+      <nav id="site-nav" class="menu-bar" aria-label="Navigazione principale" data-nav-menu>
+        <a href="#vetrina">In evidenza</a>
+        <a href="#categorie">Categorie</a>
+        <a href="#prodotti">Prodotti</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
     </header>
 
     <main>
-      <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline data-parallax data-parallax-strength="-0.08">
-          <source src="assets/vid/hero.mp4" type="video/mp4">
-          Il tuo browser non supporta i video HTML5.
-        </video>
-        <div class="hero-overlay" data-parallax data-parallax-strength="-0.12"></div>
-        <div class="hero-ornament hero-ornament--top" aria-hidden="true"></div>
-        <div class="hero-ornament hero-ornament--bottom" aria-hidden="true"></div>
-        <div class="hero-content container" data-parallax data-parallax-strength="0.04">
-          <span class="hero-eyebrow">Artigianato fatto a mano</span>
-          <h1>Oggetti unici per la tua casa</h1>
-          <p>Design moderno con anima vintage. Incisioni su vetro, acciaio, alluminio e legno per pezzi che gridano personalità.</p>
-          <a class="btn" href="#prodotti">Scopri i prodotti</a>
+      <section id="vetrina" class="hero-carousel" aria-label="Selezione prodotti in loop">
+        <div class="container hero-carousel__inner">
+          <div class="hero-carousel__intro">
+            <span class="hero-carousel__eyebrow">Produzioni in evidenza</span>
+            <h1 class="hero-carousel__title">Oggetti unici incisi a mano</h1>
+            <p class="hero-carousel__subtitle">Materia, luce e incisioni d’autore: ogni pezzo racconta una storia che nessun altro possiede.</p>
+          </div>
+          <div class="hero-carousel__stage">
+            <div class="hero-carousel__slides" data-carousel>
+              <figure class="hero-carousel__slide is-active" data-carousel-item>
+                <img src="assets/img/bicchiere2.jpeg" alt="Targa in legno inciso con pattern geometrico" loading="lazy">
+                <figcaption>Legno inciso • Pattern geometrici su essenze naturali</figcaption>
+              </figure>
+              <figure class="hero-carousel__slide" data-carousel-item>
+                <img src="assets/img/metallo4.jpeg" alt="Lastra in metallo con incisione luminosa" loading="lazy">
+                <figcaption>Metallo inciso • Contrasti netti e riflessi metallici</figcaption>
+              </figure>
+              <figure class="hero-carousel__slide" data-carousel-item>
+                <img src="assets/img/legno13.jpeg" alt="Bicchiere in vetro satinato inciso a mano" loading="lazy">
+                <figcaption>Vetro inciso • Trasparenze che giocano con la luce</figcaption>
+              </figure>
+              <figure class="hero-carousel__slide" data-carousel-item>
+                <img src="assets/img/bicchiere3.jpeg" alt="Set di bicchieri personalizzati con incisione su misura" loading="lazy">
+                <figcaption>Bicchieri incisi • Set personalizzati per eventi speciali</figcaption>
+              </figure>
+              <figure class="hero-carousel__slide" data-carousel-item>
+                <img src="assets/img/bottoglia1.jpeg" alt="Bottiglia trasformata in lampada incisa" loading="lazy">
+                <figcaption>Bottiglie luminose • Lampade poetiche da pezzi recuperati</figcaption>
+              </figure>
+            </div>
+            <div class="hero-carousel__indicators" role="tablist" aria-label="Selezione prodotto">
+              <button type="button" class="hero-carousel__indicator is-active" data-carousel-indicator aria-label="Mostra legno inciso"></button>
+              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra metallo inciso"></button>
+              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra vetro inciso"></button>
+              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra bicchieri incisi"></button>
+              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra bottiglie luminose"></button>
+            </div>
+          </div>
         </div>
       </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__inner">
+          <div class="ticker__track">
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+          </div>
+          <div class="ticker__track">
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+            <span class="ticker__item ticker__item--bold">Categorie</span>
+            <span class="ticker__item">categorie</span>
+          </div>
+        </div>
+      </div>
 
       <section id="categorie" class="section">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Servizi e categorie di incisione</h2>
-            <p class="section-subtitle">Anna trasforma vetro, metallo, legno e oggetti recuperati in pezzi iconici. Ogni categoria nasce da tecniche specifiche che permettono personalizzazioni precise e durature.</p>
+            <h2 class="section-title">Servizi</h2>
+            <p class="section-subtitle">Incisioni su misura che trasformano materiali quotidiani in oggetti icona.</p>
           </div>
           <div class="categories">
             <a class="category-card" data-reveal="fade-up" href="categoria-legno.html">
               <div class="category-icon">✶</div>
               <h3>Legno inciso</h3>
-              <p>Texture calde che accolgono pattern audaci: targhe commemorative, insegne per attività e decorazioni su misura.</p>
+              <p>Targhe e insegne in essenze naturali con pattern audaci su misura.</p>
             </a>
             <a class="category-card" data-reveal="fade-up" data-reveal-delay="80" href="categoria-metallo.html">
               <div class="category-icon">✦</div>
               <h3>Metallo inciso</h3>
-              <p>Acciaio e alluminio trattati con incisioni a contrasto per loghi, targhe tecniche e accessori industrial chic.</p>
+              <p>Acciaio e alluminio incisi a contrasto per loghi e targhe industrial chic.</p>
             </a>
             <a class="category-card" data-reveal="fade-up" data-reveal-delay="160" href="categoria-vetro.html">
               <div class="category-icon">✺</div>
               <h3>Vetro inciso</h3>
-              <p>Trasparenze vibranti con finiture luminose: decorazioni su vetro satinato o trasparente che giocano con la luce.</p>
+              <p>Trasparenze scolpite che accendono vetro satinato e superfici brillanti.</p>
             </a>
             <a class="category-card" data-reveal="fade-up" data-reveal-delay="240" href="categoria-bicchieri.html">
               <div class="category-icon">❋</div>
               <h3>Bicchieri incisi</h3>
-              <p>Set incisi a mano per eventi speciali e collezioni limitate, con grafiche personalizzate e messaggi dedicati.</p>
+              <p>Set unici per eventi speciali con grafiche dedicate inciso a mano.</p>
             </a>
             <a class="category-card" data-reveal="fade-up" data-reveal-delay="320" href="categoria-bottiglie.html">
               <div class="category-icon">✹</div>
               <h3>Bottiglie con lampada</h3>
-              <p>Bottiglie recuperate trasformate in lampade poetiche: incisioni che guidano e diffondono la luce in ambienti scenografici.</p>
+              <p>Bottiglie recuperate trasformate in lampade scenografiche e luminose.</p>
             </a>
           </div>
         </div>
       </section>
+
+      <div class="ticker ticker--gallery" aria-hidden="true">
+        <div class="ticker__inner">
+          <div class="ticker__track">
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+          </div>
+          <div class="ticker__track">
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+            <span class="ticker__item ticker__item--bold">Galleria</span>
+            <span class="ticker__item">galleria</span>
+          </div>
+        </div>
+      </div>
 
       <section id="prodotti" class="section">
         <div class="container">
@@ -94,15 +176,46 @@
 
       <section id="contatti" class="section contact">
         <div class="container contact-content">
-          <div data-reveal="fade-up">
+          <div class="contact-intro" data-reveal="fade-up">
             <h2 class="section-title">Contatta Anna</h2>
-            <p>Desideri un pezzo su misura o vuoi conoscere la disponibilità? Scrivi direttamente ad Anna, sarà felice di guidarti tra materiali, finiture e personalizzazioni.</p>
+            <p>Parliamo del tuo progetto su misura: dal concept alla consegna ti seguo nella scelta di materiali, incisioni e finiture che raccontano la tua storia.</p>
+            <ul class="contact-points">
+              <li>Campionature rapide e consulenza su vetro, metallo, legno e materiali recuperati.</li>
+              <li>Personalizzazioni per eventi, brand e regali unici con consegna curata in tutta Italia.</li>
+              <li>Appuntamenti in studio su richiesta con moodboard e prototipi dedicati.</li>
+            </ul>
+            <div class="contact-actions">
+              <a class="btn contact-btn" href="mailto:ciao@annaatelier.it">Scrivi una mail</a>
+              <a class="btn contact-btn contact-btn--outline" href="https://wa.me/393331234567" target="_blank" rel="noopener">Chat WhatsApp</a>
+            </div>
           </div>
           <div class="contact-card" data-reveal="fade-up" data-reveal-delay="120">
             <h3>Info e ordini</h3>
-            <a class="contact-link" href="mailto:ciao@annaatelier.it">ciao@annaatelier.it</a>
-            <a class="contact-link" href="https://wa.me/393331234567" target="_blank" rel="noopener">WhatsApp +39 333 123 4567</a>
-            <p class="contact-note">Rispondo dal lunedì al venerdì, ore 10:00 - 18:00.</p>
+            <dl class="contact-list">
+              <div class="contact-list__item">
+                <dt>Email</dt>
+                <dd><a class="contact-link" href="mailto:ciao@annaatelier.it">ciao@annaatelier.it</a></dd>
+              </div>
+              <div class="contact-list__item">
+                <dt>WhatsApp</dt>
+                <dd><a class="contact-link" href="https://wa.me/393331234567" target="_blank" rel="noopener">+39 333 123 4567</a></dd>
+              </div>
+              <div class="contact-list__item">
+                <dt>Instagram</dt>
+                <dd><a class="contact-link" href="https://www.instagram.com/annaatelier" target="_blank" rel="noopener">@annaatelier</a></dd>
+              </div>
+            </dl>
+            <ul class="contact-meta">
+              <li>
+                <span class="contact-meta__label">Studio</span>
+                <span class="contact-meta__value">Bergamo • Italia</span>
+              </li>
+              <li>
+                <span class="contact-meta__label">Disponibilità</span>
+                <span class="contact-meta__value">Lun – Ven, 10:00 → 18:00</span>
+              </li>
+            </ul>
+            <p class="contact-note">Rispondo entro 24 ore lavorative con proposte personalizzate e indicazioni su tempi e costi.</p>
           </div>
         </div>
       </section>
