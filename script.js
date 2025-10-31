@@ -220,10 +220,10 @@
           </article>
           <article class="privacy-card">
             <h3>Diritti dell’interessato</h3>
-            <p>Puoi richiedere accesso, rettifica o cancellazione dei dati scrivendo a <a href="mailto:privacy@annaatelier.it">privacy@annaatelier.it</a>. Riceverai risposta entro 30 giorni.</p>
+            <p>Puoi richiedere accesso, rettifica o cancellazione dei dati scrivendo a <a href="mailto:privacy@martylab.it">privacy@martylab.it</a>. Riceverai risposta entro 30 giorni.</p>
           </article>
         </div>
-        <p class="privacy-note">Ultimo aggiornamento: 1 giugno 2024. Per approfondimenti o segnalazioni contatta privacy@annaatelier.it.</p>
+        <p class="privacy-note">Ultimo aggiornamento: 1 giugno 2024. Per approfondimenti o segnalazioni contatta privacy@martylab.it.</p>
       </div>
     `;
 
