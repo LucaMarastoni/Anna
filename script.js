@@ -67,6 +67,13 @@
         "Bottiglie recuperate trasformate in lampade poetiche: incisioni e luce calda per un effetto scenografico.",
       caption: "Bottiglie trasformate in lampade con incisioni decorative.",
       images: ["bottoglia1.jpeg"]
+    },
+    tessuto: {
+      title: "Stampa su tessuto",
+      description:
+        "Pattern e grafiche stampate su tessuti naturali e tecnici per accessori, elementi d'arredo e capsule personalizzate.",
+      caption: "Stampe su tessuto con texture su misura per progetti creativi.",
+      images: ["tessuto1.jpeg", "tessuto2.jpeg", "tessuto3.jpeg"]
     }
   };
 
