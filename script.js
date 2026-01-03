@@ -73,7 +73,15 @@
       description:
         "Pattern e grafiche stampate su tessuti naturali e tecnici per accessori, elementi d'arredo e capsule personalizzate.",
       caption: "Stampe su tessuto con texture su misura per progetti creativi.",
-      images: ["tessuto1.jpeg", "tessuto2.jpeg", "tessuto3.jpeg"]
+      images: [
+        "tessuto1.jpeg",
+        "tessuto2.jpeg",
+        "tessuto3.jpeg",
+        "tessuto4.jpeg",
+        "tessuto5.jpeg",
+        "tessuto6.jpeg",
+        "tessuto7.jpeg"
+      ]
     }
   };
 
