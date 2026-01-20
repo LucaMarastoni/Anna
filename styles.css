@@ -960,6 +960,23 @@ main {
   text-decoration: underline;
 }
 
+.footer-credit {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 230, 0, 0.6);
+  text-align: right;
+}
+
+.footer-credit__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-credit__link:hover {
+  text-decoration: underline;
+}
+
 .whatsapp-float {
   position: fixed;
   right: calc(1.6rem + env(safe-area-inset-right));
